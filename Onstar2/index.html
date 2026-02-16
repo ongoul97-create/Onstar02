@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>전북과학고등학교 다국어 자동 감지 TTS</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<style>
+body{
+ background:linear-gradient(135deg,#eef3ff,#f9fbff);
+ font-family:"맑은 고딕",sans-serif;
+ display:flex;
+ justify-content:center;
+ padding:30px;
+}
+.container{
+ width:1200px;
+ background:white;
+ padding:25px 30px 30px 30px;
+ border-radius:18px;
+ box-shadow:0 8px 25px rgba(0,0,0,0.12);
+}
+
+h2{margin-top:0;text-align:center;color:#2c3e50;}
+
+textarea{
+ width:100%;
+ height:300px;
+ font-size:19px;
+ padding:18px;
+ border-radius:12px;
+ border:1px solid #ccd3e0;
+ resize:none;
+ line-height:1.7;
+}
+
+.topbar{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:10px;
+}
+
+.voiceRow{
+ display:flex;
+ gap:10px;
+ margin:10px 0 15px 0;
+}
+
+.dropdown{
+ position:relative;
+}
+
+.dropbtn{
+ background:#2e86de;
+ color:white;
+ border:none;
+ padding:9px 18px;
+ border-radius:10px;
+ cursor:pointer;
+}
+
+.menu{
+ position:absolute;
+ top:40px;
+ left:0;
+ background:white;
+ border-radius:10px;
+ box-shadow:0 6px 18px rgba(0,0,0,0.15);
+ display:none;
+ min-width:140px;
+ z-index:5;
+}
+
+.menu button{
+ width:100%;
+ background:white;
+ color:#333;
+ border:none;
+ padding:8px;
+ text-align:left;
+}
+.menu button:hover{background:#f0f4ff;}
+
+.controls{
+ text-align:center;
+ margin-top:15px;
+}
+
+.mainbtn{
+ background:#27ae60;
+ padding:10px 25px;
+ border:none;
+ border-radius:12px;
+ color:white;
+ font-size:18px;
+ margin:5px;
+ cursor:pointer;
+}
+.stop{background:#e74c3c;}
+.pause{background:#f39c12;}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+<h2>전북과학고등학교 다국어 자동 감지 TTS</h2>
+
+<div class="topbar">
+<input type="file" id="fileInput" accept=".txt,.pdf">
+</div>
+
+<div class="voiceRow">
+<div class="dropdown">
+<button class="dropbtn" onclick="toggleMenu('koMenu')">한국어</button>
+<div id="koMenu" class="menu">
+<button onclick="setVoice('ko','male','koMenu')">남자</button>
+<button onclick="setVoice('ko','female','koMenu')">여자</button>
+<button onclick="setVoice('ko','child','koMenu')">어린이</button>
+<button onclick="setVoice('ko','cat','koMenu')">고양이</button>
+<button onclick="setVoice('ko','devil','koMenu')">악마</button>
+</div>
+</div>
+
+<div class="dropdown">
+<button class="dropbtn" onclick="toggleMenu('enMenu')">English</button>
+<div id="enMenu" class="menu">
+<button onclick="setVoice('en','male','enMenu')">Male</button>
+<button onclick="setVoice('en','female','enMenu')">Female</button>
+<button onclick="setVoice('en','child','enMenu')">Child</button>
+<button onclick="setVoice('en','cat','enMenu')">Cat</button>
+<button onclick="setVoice('en','devil','enMenu')">Devil</button>
+</div>
+</div>
+
+<div class="dropdown">
+<button class="dropbtn" onclick="toggleMenu('jaMenu')">日本語</button>
+<div id="jaMenu" class="menu">
+<button onclick="setVoice('ja','male','jaMenu')">男</button>
+<button onclick="setVoice('ja','female','jaMenu')">女</button>
+<button onclick="setVoice('ja','child','jaMenu')">子供</button>
+<button onclick="setVoice('ja','cat','jaMenu')">猫</button>
+<button onclick="setVoice('ja','devil','jaMenu')">悪魔</button>
+</div>
+</div>
+</div>
+
+<textarea id="text">
+전북과학고등학교
+
+교육 목표
+
+과학영재의 조기 발굴 육성
+ Early identification and nurturing of scientifically gifted students
+ 科学英才の早期発掘と育成
+
+고급 과학 두뇌 양성의 기반 조성
+ Establishing a foundation for cultivating advanced scientific minds
+ 高度な科学的人材育成の基盤づくり
+
+과학 기술 발전을 선도할 인재 양성
+ Fostering talents who will lead advancements in science and technology
+ 科学技術の発展を先導する人材の育成
+
+경영 방침
+
+조화로운 인격과 전문성을 갖춘 실력인 양성
+ Cultivating competent individuals with harmonious character and professionalism
+ 調和のとれた人格と専門性を備えた実力ある人材の育成
+
+불편함을 감내하는 지혜와 더불어 사는 공동체 의식 함양
+ Developing wisdom to endure challenges and a strong sense of community
+ 困難に耐える知恵と共に生きる共同体意識の涵養
+
+소질과 적성을 꽃피우는 과학 인재 교육
+ Providing science education that helps talents and aptitudes flourish
+ 素質と適性を伸ばす科学人材教育
+
+교권과 학생 인권이 조화를 이루는 학교 운영
+ Operating a school where teachers’ authority and students’ rights are balanced
+ 教師の権威と学生の人権が調和する学校運営
+
+미래 지향적인 교수 학습 환경 조성
+ Creating a future-oriented teaching and learning environment
+ 未来志向の教授・学習環境の構築
+
+교육 비전
+
+학생 : 자율과 창의로 탐구하는 학생
+ Students: Learners who explore with autonomy and creativity
+ 学生：自律と創造性で探究する学生
+
+교원 : 사랑과 정성으로 가르치는 교원
+ Teachers: Educators who teach with love and dedication
+ 教員：愛情と真心をもって教える教員
+
+학교 : 교육공동체가 만족하는 즐겁고 행복한 학교
+ School: A joyful and happy school where the educational community is satisfied
+ 学校：教育共同体が満足する楽しく幸せな学校
+
+</textarea>
+
+<div class="controls">
+<button class="mainbtn" onclick="start()">🔊 읽기</button>
+<button class="mainbtn pause" onclick="pauseResume()">⏸ 잠시멈춤</button>
+<button class="mainbtn stop" onclick="stopTTS()">⏹ 정지</button>
+</div>
+
+</div>
+
+<script>
+let settings={ko:'female',en:'female',ja:'female'};
+
+function toggleMenu(id){
+ document.querySelectorAll('.menu').forEach(m=>{ if(m.id!==id)m.style.display='none';});
+ let m=document.getElementById(id);
+ m.style.display=(m.style.display=='block')?'none':'block';
+}
+
+function setVoice(lang,type,menuId){
+ settings[lang]=type;
+ document.getElementById(menuId).style.display='none';
+}
+
+function applyCharacter(u,lang){
+ let t=settings[lang];
+ if(t=="male"){u.pitch=0.7;u.rate=0.95;}
+ if(t=="female"){u.pitch=1;u.rate=1;}
+ if(t=="child"){u.pitch=1.5;u.rate=1.1;}
+ if(t=="cat"){u.pitch=2;u.rate=1.25;}
+ if(t=="devil"){u.pitch=0.5;u.rate=0.85;}
+}
+
+function charLang(c){
+ if(/[가-힣]/.test(c))return"ko";
+ if(/[ぁ-んァ-ン一-龯]/.test(c))return"ja";
+ if(/[a-zA-Z]/.test(c))return"en";
+ return"keep";
+}
+
+function splitLang(text){
+ let arr=[],cur="",lang=null;
+ for(let ch of text){
+  let l=charLang(ch);
+  if(l=="keep")l=lang;
+  if(!lang)lang=l;
+  if(l!=lang){arr.push({text:cur,lang});cur=ch;lang=l;}
+  else cur+=ch;
+ }
+ if(cur)arr.push({text:cur,lang});
+ return arr;
+}
+
+let queue=[],index=0,paused=false;
+
+function buildQueue(){
+ queue=splitLang(document.getElementById("text").value).filter(p=>p.text.trim()!="");
+}
+
+function speakNext(){
+ if(index>=queue.length)return;
+ let u=new SpeechSynthesisUtterance(queue[index].text);
+ let map={ko:"ko-KR",en:"en-US",ja:"ja-JP"};
+ u.lang=map[queue[index].lang];
+ applyCharacter(u,queue[index].lang);
+ u.onend=()=>{if(!paused){index++;speakNext();}};
+ speechSynthesis.speak(u);
+}
+
+function start(){speechSynthesis.cancel();index=0;paused=false;buildQueue();speakNext();}
+function pauseResume(){if(!paused){paused=true;speechSynthesis.cancel();}else{paused=false;speakNext();}}
+function stopTTS(){speechSynthesis.cancel();index=0;paused=false;}
+
+// 파일 불러오기
+document.getElementById("fileInput").addEventListener("change",async e=>{
+ const file=e.target.files[0];
+ if(!file)return;
+
+ if(file.name.endsWith(".txt")){
+  document.getElementById("text").value=await file.text();
+ }
+
+ if(file.name.endsWith(".pdf")){
+  const reader=new FileReader();
+  reader.onload=async function(){
+   const pdf=await pdfjsLib.getDocument(new Uint8Array(this.result)).promise;
+   let full="";
+   for(let i=1;i<=pdf.numPages;i++){
+    const page=await pdf.getPage(i);
+    const content=await page.getTextContent();
+    content.items.forEach(it=>full+=it.str+" ");
+    full+="\n";
+   }
+   document.getElementById("text").value=full;
+  };
+  reader.readAsArrayBuffer(file);
+ }
+});
+</script>
+
+</body>
+</html>
